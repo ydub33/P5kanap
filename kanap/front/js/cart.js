@@ -1,3 +1,5 @@
+/*** Adding DOM elements ***/
+
 let addArticle = (instance, id) => {
 
     let article = document.createElement("article")
@@ -108,7 +110,7 @@ let addDelete = (cart__item__content__settings) => {
 /************************************************************** */
 const cart__items = document.querySelector('#cart__items')
 
-/* display order */
+/* display the same models together*/
 let localkeys = []
 for (let i = 0; i < localStorage.length; i++) {
     let ikey = localStorage.key(i)
@@ -352,6 +354,6 @@ const orderButton = document.querySelector('#order')
 document.querySelector("#order").addEventListener("click", function (event) {
     event.preventDefault();
 })
-/* */
+/* send order and form */
 orderButton.addEventListener('click', () => sendForm())
 

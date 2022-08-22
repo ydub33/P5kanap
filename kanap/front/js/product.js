@@ -1,11 +1,7 @@
 const params = new URLSearchParams(window.location.search)
-/*
-for (const param of params) {
-    console.log(param)
-  }
-*/
+
 const id = params.get("id")
-//console.log({id})
+
 
 
 fetch(`http://localhost:3000/api/products/${id} `, { method: "GET" })
@@ -15,12 +11,12 @@ fetch(`http://localhost:3000/api/products/${id} `, { method: "GET" })
 
 /** */
 
-/* creation image */
+/* create image */
 const item__img = document.querySelector('.item__img')
 let image = document.createElement("img")
 item__img.appendChild(image)
 
-/* les selectors */
+/* selectors */
 const title = document.querySelector('#title')
 const price = document.querySelector('#price')
 const description = document.querySelector('#description')
@@ -28,7 +24,7 @@ const colors = document.querySelector('#colors')
 const button = document.querySelector('#addToCart')
 
 /************************* ****/
-/*     fonction addOrder      */
+/*     function addOrder      */
 /************************* ****/
 
 let addOrder = (data) => {
@@ -44,7 +40,7 @@ let addOrder = (data) => {
 /*********************************************** */
 
 /************************* ****/
-/* fonction addProductDetails */
+/* function addProductDetails */
 /************************* ****/
 
 let addProductDetails = (data) => {
@@ -54,7 +50,7 @@ let addProductDetails = (data) => {
 }
 
 /************************* ****/
-/*     fonction sendData      */
+/*     function sendData      */
 /************************* ****/
 let sendData = (data) => {
 
@@ -91,7 +87,7 @@ let sendData = (data) => {
 }
 
 /************************* ****/
-/* fonction addData           */
+/* function addData           */
 /************************* ****/
 
 let addData = (data) => {
@@ -102,7 +98,7 @@ let addData = (data) => {
     description.textContent = data.description
 }
 /************************* ****/
-/* fonction colorOptions      */
+/* function colorOptions      */
 /************************* ****/
 let colorOptions = (data) => {
     for (let i = 0; i < data.colors.length; i++) {
@@ -113,7 +109,7 @@ let colorOptions = (data) => {
     }
 }
 /************************* ****/
-/* fonction updateQuantity   */
+/* function updateQuantity   */
 /************************* ****/
 let updateQuantity = (key, orderQuantity) => {
     let local = {}
