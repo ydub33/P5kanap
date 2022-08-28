@@ -1,3 +1,17 @@
+/*************************************************************/
+/*************************************************************/
+/***********           PRODUCT.JS                *************/
+/*************************************************************/
+/*************************************************************/
+
+// le code ci-dessous permet de recuperer les donnees de l'api
+// pour afficher les détails du produit sélectionné.
+// Il permet au client de sélectionner une couleur et une quantité
+// du canapé choisi et de le commander (envoi vers le panier)
+
+
+/* on recupere l'id de l'url de la page du produit selectionné */
+
 const params = new URLSearchParams(window.location.search)
 
 const id = params.get("id")
@@ -26,6 +40,11 @@ const button = document.querySelector('#addToCart')
 /************************* ****/
 /*     function addOrder      */
 /************************* ****/
+// fonction principale 
+// ==> affiche les détails du produit avec la fonction addProductDetails
+// ==> envoi les données du choix avec la fonction sendData
+// envoi vers le panier au clic "Ajouter au panier"
+
 
 let addOrder = (data) => {
 
@@ -52,6 +71,20 @@ let addProductDetails = (data) => {
 /************************* ****/
 /*     function sendData      */
 /************************* ****/
+
+// Cette fonction recupere les données de l'api et du DOM(couleur et quantité)
+// et ensuite traite les 3 scenarios possibles lors du choix :
+
+// ==> le client commande un modele canape/couleur déja commandé
+// On met à jour la quantité grace à la fonction updateQuantity
+
+// ==> le client commande un modele canape/couleur non present dans le panier
+// On envoie les données (variable orderData) vers le localStorage pour 
+// ajouter le choix au panier
+
+// ==> le client oublie de specifier une quantité et/ou une couleur
+// un message d'alerte s'affiche
+
 let sendData = (data) => {
 
     const orderImg = data.imageUrl

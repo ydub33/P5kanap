@@ -1,3 +1,49 @@
+/*************************************************************/
+/*************************************************************/
+/***********           CART.JS                   *************/
+/*************************************************************/
+/*************************************************************/
+
+// le code ci-dessous permet d'afficher le panier avec les produits sélectionnés,
+// de rentrer ses informations personnelles dans le formulaire 
+// et de passer sa commande
+
+// le code est divisé en plusieurs parties :
+
+// 1 ==> Création des éléments
+        // On crée l'article du produit grace à la fonction addArticle
+        // addArticle comprend les fonctions addImage et addContent
+            // addContent comprend les fonctions addDescription et addSettings
+            // addDescription : addName addColor addPrice
+            // addSettings : addQuantity addDelete 
+
+// 2 ==> Affichage des éléments 
+        // On affiche tout avec la fonction addAllArticles
+        // on veut que les memes modeles de canapé et de différentes couleurs
+        // s'affichent ensemble
+        // la creation de l'array sortlocalkeys permet cet affichage
+
+// 3 ==> Mettre à jour la quantité  
+        // on listen les changements de quantité dans l'input
+        // avec la fonction changeQuantity dans une loop
+        
+// 4 ==> Pouvoir supprimer un produit du panier 
+        // on listen le clic "supprimmer"
+        // avec la fonction removeInstance dans une loop
+        
+// 5 ==> Vérifier les informations rentrées dans le formulaire
+        // on verifie les input avec les fonctions :
+        // checkFirstName checkLastName checkAddress checkCity checkEmail
+        // execution avec la fonction checkForm
+
+// 6 ==> Envoi des données de la commande
+        // l'api attend les informations personnelles dans contact :
+        // et l'array des id 
+        // on réalise l'array "ids" 
+        // on POST la commande avec la fonction sendForm
+
+
+
 /*** Adding DOM elements ***/
 
 let addArticle = (instance, id) => {
@@ -140,6 +186,7 @@ let addAllArticles = () => {
 
 addAllArticles()
 
+/* *************                        *********************/
 /* *************   update input change  *********************/
 
 let input = document.querySelectorAll(".itemQuantity")
@@ -168,6 +215,7 @@ for (let i = 0; i < localStorage.length; i++) {
     input[i].addEventListener("change", () => changeQuantity())
 }
 
+/* *************           *********************/
 /* *************   delete  *********************/
 
 let btnDelete = document.querySelectorAll(".cart__item__content__settings__delete")

@@ -1,3 +1,14 @@
+/*************************************************************/
+/*************************************************************/
+/***********           SCRIPT.JS                 *************/
+/*************************************************************/
+/*************************************************************/
+
+// le code ci-dessous permet de recuperer les donnees de l'api
+// pour afficher tous nos produits (image,nom,description) sur 
+// la page d'acceuil de notre site web
+
+
 fetch('http://localhost:3000/api/products',{method: "GET" })
     .then(res => res.json())
     .then(data => addProductCard(data))
