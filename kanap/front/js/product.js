@@ -95,12 +95,12 @@ let sendData = (data) => {
     let id2 = id + orderColor
     let key = id2
 
-    if (((orderColor != "") && (orderQuantity > 0)) &&
+    if (((orderColor != "") && (orderQuantity > 0) && (orderQuantity < 101)) &&
         (localStorage.getItem(key))) {
 
         updateQuantity(key, orderQuantity)
 
-    } else if ((orderColor != "") && (orderQuantity > 0)) {
+    } else if ((orderColor != "") && (orderQuantity > 0) && (orderQuantity < 101)) {
 
         const orderData = {
             id2: id2,
@@ -115,7 +115,7 @@ let sendData = (data) => {
         window.location.href = 'cart.html'
 
     } else {
-        alert('Veuillez sélectionner une couleur et une quantité')
+        alert('Veuillez sélectionner une couleur et une quantité valide (1-100)')
     }
 }
 
@@ -147,7 +147,10 @@ let colorOptions = (data) => {
 let updateQuantity = (key, orderQuantity) => {
     let local = {}
     local = JSON.parse(localStorage.getItem(key))
-    local.quantity += orderQuantity
+    if ((local.quantity + orderQuantity)<101 ){
+        local.quantity += orderQuantity
+    } else local.quantity =100
+    
     localStorage.setItem(key, JSON.stringify(local))
     window.location.href = 'cart.html'
 }

@@ -206,7 +206,15 @@ for (let i = 0; i < localStorage.length; i++) {
 
                 let itemQuantity = document.querySelectorAll('.itemQuantity')[i]
                 let newQuantity = itemQuantity.value
-                instance.quantity =  Math.abs(Number(newQuantity)) 
+
+                if (newQuantity==0) {
+                    instance.quantity = 1
+                } else if (newQuantity>100 || newQuantity<-99) {
+                    instance.quantity = 100
+                } else {
+                    instance.quantity = Math.abs(Number(newQuantity))
+                }
+
                 localStorage.setItem(sortlocalkeys[i], JSON.stringify(instance))
             }
         }
@@ -360,7 +368,7 @@ for (let i = 0; i < localStorage.length; i++) {
 }
 /** */
 let sendForm = () => {
-    if (checkForm() === true && localStorage.length > 0)  {
+    if (checkForm() === true && localStorage.length > 0) {
         const firstName = document.getElementById('firstName').value
         const lastName = document.getElementById('lastName').value
         const address = document.getElementById('address').value
